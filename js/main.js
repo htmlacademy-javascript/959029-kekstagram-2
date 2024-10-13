@@ -55,14 +55,14 @@ const getRandomInteger = (a, b) => {
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-const getId = (idArr) => {return idArr.splice(0,1)};
+const getId = (idArr) => {return idArr.splice(0,1)[0]};
 
 const createFoto = () => ({
   id: getId(idFoto),
   url: 'photos/' + getId(urlFoto) +'.jpg',
   description: getRandomArrayElement(DESCRIPTION),
   likes: getRandomInteger(15,20),
-  comments: createComments(),
+  comments: Array.from({length: getRandomInteger(0,30)}, createComments),
 });
 
 const createComments = () => ({
